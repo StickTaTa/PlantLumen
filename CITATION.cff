@@ -8,7 +8,7 @@ abstract: >-
   estimated inside a species and a fold, from training sections only.
 type: software
 license: MIT
-version: 0.1.0
+version: 0.1.2
 date-released: "2026-11-14"
 keywords:
   - spatial transcriptomics
