@@ -13,6 +13,12 @@ The method is described in the accompanying manuscript, *PlantLumen predicts spa
 from plant tissue section images via intraspecies reference retrieval and determines gene image
 localizability*.
 
+![PlantLumen overview](docs/figures/plantlumen_overview.jpg)
+
+*PlantLumen prediction chain. A frozen image representation, its 12-neighbour physical context and a
+63-dimensional plant stain descriptor query a same-species reference bank; the retrieved expression
+profiles are fused at a fixed weight and projected onto a low-rank expression subspace.*
+
 ## What is in this repository
 
 | Path | Contents |
