@@ -58,13 +58,16 @@ consolidated into the package (see **Current release scope**).
 
 ## Workflow
 
-![PlantLumen workflow](docs/figures/plantlumen_overview.jpg)
+![PlantLumen workflow](docs/figures/plantlumen_overview.png)
 
-**Fig. 1 overview.** PlantLumen represents each capture location with a frozen image feature, the
-mean of its 12 nearest physical neighbours and a 63-dimensional plant stain descriptor. The image and
-descriptor routes retrieve profiled spots from a same-species reference bank, the two predictions are
-fused at a fixed weight and projected onto a low-rank expression subspace, and a stage-coverage
-branch contributes only when the held-out developmental stage is absent from the reference.
+**Fig. 1 overview.** PlantLumen represents each capture location with a frozen ImageNet ResNet-50
+focal patch feature, the mean of its 12 nearest physical neighbours and a 63-dimensional plant stain,
+colour and texture descriptor. The image route applies PCA-768 and correlation alignment before
+cosine retrieval (k = 21); the descriptor route applies per-fold PCA and averages raw (k = 9) and
+aligned (k = 21) retrieval. The two predictions are fused at fixed 0.80/0.20 weights and projected
+onto low-rank subspaces (ranks 16, 20 and 32). A conditional stage-coverage branch contributes at
+0.55/0.45 only when the held-out developmental stage is absent, and the output is evaluated across
+barley, maize, Arabidopsis and Norway spruce at species-appropriate readouts.
 
 ## Highlights
 
