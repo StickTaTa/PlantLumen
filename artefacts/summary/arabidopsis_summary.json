@@ -1,0 +1,11 @@
+{
+ "species": "arabidopsis",
+ "marker_pass": false,
+ "n_folds": 4,
+ "n_genes": 17646,
+ "readout": "k8",
+ "block_mean": 0.1726454550826767,
+ "spot_mean": 0.01962669612839818,
+ "elapsed_s": 110.3,
+ "result_dir": "G:\\PlantLumen\\bench\\results\\arabidopsis\\ours_v15_u1"
+}

@@ -1,0 +1,11 @@
+{
+ "summary": {
+  "block_mean": 0.6089656228279051,
+  "block_median": 0.7095117693626752,
+  "ridge_mean": 0.10728582077556187,
+  "ridge_median": 0.08450254342622227
+ },
+ "n_folds": 9,
+ "panel_file": "bench/tables/panel_u1_barley.txt",
+ "panel_size": 11739
+}

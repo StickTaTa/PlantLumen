@@ -1,0 +1,127 @@
+protocol	section	stage	pathway	n_genes	rho	stage_absent
+section	3DAP_A	3DAP	storage protein / protease inhibitor	1		0
+section	3DAP_A	3DAP	starch biosynthesis	4	0.5762247236386399	0
+section	3DAP_A	3DAP	starch mobilisation	3	0.6022274638217799	0
+section	3DAP_A	3DAP	plastid fatty-acid synthesis	3	0.4677611877848417	0
+section	3DAP_A	3DAP	oil body	0		0
+section	3DAP_A	3DAP	chaperone / redox	3	0.5598808348636837	0
+section	3DAP_A	3DAP	cell expansion	1		0
+section	3DAP_B	3DAP	storage protein / protease inhibitor	2	0.7151888580846809	0
+section	3DAP_B	3DAP	starch biosynthesis	4	0.5649878646272839	0
+section	3DAP_B	3DAP	starch mobilisation	3	0.5781702731708475	0
+section	3DAP_B	3DAP	plastid fatty-acid synthesis	3	0.5168778894074126	0
+section	3DAP_B	3DAP	oil body	1		0
+section	3DAP_B	3DAP	chaperone / redox	3	0.5340912764700627	0
+section	3DAP_B	3DAP	cell expansion	1		0
+section	3DAP_C	3DAP	storage protein / protease inhibitor	1		0
+section	3DAP_C	3DAP	starch biosynthesis	4	0.6221019460744469	0
+section	3DAP_C	3DAP	starch mobilisation	3	0.580637567756525	0
+section	3DAP_C	3DAP	plastid fatty-acid synthesis	3	0.5361475843872013	0
+section	3DAP_C	3DAP	oil body	0		0
+section	3DAP_C	3DAP	chaperone / redox	3	0.6410561476684742	0
+section	3DAP_C	3DAP	cell expansion	1		0
+section	3DAP_D	3DAP	storage protein / protease inhibitor	1		0
+section	3DAP_D	3DAP	starch biosynthesis	4	0.6170436447873849	0
+section	3DAP_D	3DAP	starch mobilisation	3	0.6410175417146862	0
+section	3DAP_D	3DAP	plastid fatty-acid synthesis	3	0.43975684358737976	0
+section	3DAP_D	3DAP	oil body	0		0
+section	3DAP_D	3DAP	chaperone / redox	3	0.5951149122466096	0
+section	3DAP_D	3DAP	cell expansion	1		0
+section	6DAP_A	6DAP	storage protein / protease inhibitor	2	0.4275829350013978	0
+section	6DAP_A	6DAP	starch biosynthesis	4	0.19188898486966158	0
+section	6DAP_A	6DAP	starch mobilisation	3	0.3584151224178419	0
+section	6DAP_A	6DAP	plastid fatty-acid synthesis	3	0.35709087001769113	0
+section	6DAP_A	6DAP	oil body	1		0
+section	6DAP_A	6DAP	chaperone / redox	3	0.31245464247380167	0
+section	6DAP_A	6DAP	cell expansion	1		0
+section	6DAP_B	6DAP	storage protein / protease inhibitor	1		0
+section	6DAP_B	6DAP	starch biosynthesis	4	0.2733117725904538	0
+section	6DAP_B	6DAP	starch mobilisation	3	0.35085592568781554	0
+section	6DAP_B	6DAP	plastid fatty-acid synthesis	3	0.4426673467913905	0
+section	6DAP_B	6DAP	oil body	1		0
+section	6DAP_B	6DAP	chaperone / redox	3	0.3973168263621397	0
+section	6DAP_B	6DAP	cell expansion	1		0
+section	6DAP_D	6DAP	storage protein / protease inhibitor	2	0.44031072273268096	0
+section	6DAP_D	6DAP	starch biosynthesis	4	0.3369884240155931	0
+section	6DAP_D	6DAP	starch mobilisation	3	0.44197911569389814	0
+section	6DAP_D	6DAP	plastid fatty-acid synthesis	3	0.4814890785859227	0
+section	6DAP_D	6DAP	oil body	1		0
+section	6DAP_D	6DAP	chaperone / redox	3	0.47759392441557763	0
+section	6DAP_D	6DAP	cell expansion	1		0
+section	12DAP_A	12DA	storage protein / protease inhibitor	3	0.5592883009332779	0
+section	12DAP_A	12DA	starch biosynthesis	4	-0.40052069083750136	0
+section	12DAP_A	12DA	starch mobilisation	3	0.015126563109806455	0
+section	12DAP_A	12DA	plastid fatty-acid synthesis	3	0.33150822074032255	0
+section	12DAP_A	12DA	oil body	1		0
+section	12DAP_A	12DA	chaperone / redox	3	0.4439007864686278	0
+section	12DAP_A	12DA	cell expansion	1		0
+section	20DAP_A	20DA	storage protein / protease inhibitor	3	0.5746862871674823	0
+section	20DAP_A	20DA	starch biosynthesis	4	-0.2133286784177272	0
+section	20DAP_A	20DA	starch mobilisation	2	0.11635633074167892	0
+section	20DAP_A	20DA	plastid fatty-acid synthesis	3	0.46170685896780517	0
+section	20DAP_A	20DA	oil body	1		0
+section	20DAP_A	20DA	chaperone / redox	3	0.5382813634564433	0
+section	20DAP_A	20DA	cell expansion	1		0
+stage	3DAP_A	3DAP	storage protein / protease inhibitor	1		0
+stage	3DAP_A	3DAP	starch biosynthesis	4	0.46616676768077814	1
+stage	3DAP_A	3DAP	starch mobilisation	3	0.5775844525674746	1
+stage	3DAP_A	3DAP	plastid fatty-acid synthesis	3	0.4014428454929608	1
+stage	3DAP_A	3DAP	oil body	0		0
+stage	3DAP_A	3DAP	chaperone / redox	3	0.5194053081887073	1
+stage	3DAP_A	3DAP	cell expansion	1		0
+stage	3DAP_B	3DAP	storage protein / protease inhibitor	2	0.5346168277707709	1
+stage	3DAP_B	3DAP	starch biosynthesis	4	0.44603417429572473	1
+stage	3DAP_B	3DAP	starch mobilisation	3	0.5366572335880333	1
+stage	3DAP_B	3DAP	plastid fatty-acid synthesis	3	0.42808609912512763	1
+stage	3DAP_B	3DAP	oil body	1		0
+stage	3DAP_B	3DAP	chaperone / redox	3	0.47956245983333284	1
+stage	3DAP_B	3DAP	cell expansion	1		0
+stage	3DAP_C	3DAP	storage protein / protease inhibitor	1		0
+stage	3DAP_C	3DAP	starch biosynthesis	4	0.5422947133443945	1
+stage	3DAP_C	3DAP	starch mobilisation	3	0.5207565991048121	1
+stage	3DAP_C	3DAP	plastid fatty-acid synthesis	3	0.4576892252465065	1
+stage	3DAP_C	3DAP	oil body	0		0
+stage	3DAP_C	3DAP	chaperone / redox	3	0.5440454023116035	1
+stage	3DAP_C	3DAP	cell expansion	1		0
+stage	3DAP_D	3DAP	storage protein / protease inhibitor	1		0
+stage	3DAP_D	3DAP	starch biosynthesis	4	0.4854276335011527	1
+stage	3DAP_D	3DAP	starch mobilisation	3	0.597187875755056	1
+stage	3DAP_D	3DAP	plastid fatty-acid synthesis	3	0.3581949789883271	1
+stage	3DAP_D	3DAP	oil body	0		0
+stage	3DAP_D	3DAP	chaperone / redox	3	0.5184414900371	1
+stage	3DAP_D	3DAP	cell expansion	1		0
+stage	6DAP_A	6DAP	storage protein / protease inhibitor	2	0.4532727126223194	1
+stage	6DAP_A	6DAP	starch biosynthesis	4	0.24509614218944784	1
+stage	6DAP_A	6DAP	starch mobilisation	3	0.30997401356053145	1
+stage	6DAP_A	6DAP	plastid fatty-acid synthesis	3	0.22153865314248133	1
+stage	6DAP_A	6DAP	oil body	1		0
+stage	6DAP_A	6DAP	chaperone / redox	3	0.1721452297464367	1
+stage	6DAP_A	6DAP	cell expansion	1		0
+stage	6DAP_B	6DAP	storage protein / protease inhibitor	1		0
+stage	6DAP_B	6DAP	starch biosynthesis	4	0.1311915318246344	1
+stage	6DAP_B	6DAP	starch mobilisation	3	0.3237685382220951	1
+stage	6DAP_B	6DAP	plastid fatty-acid synthesis	3	0.1024994640895385	1
+stage	6DAP_B	6DAP	oil body	1		0
+stage	6DAP_B	6DAP	chaperone / redox	3	0.118628230281593	1
+stage	6DAP_B	6DAP	cell expansion	1		0
+stage	6DAP_D	6DAP	storage protein / protease inhibitor	2	0.19284280995414224	1
+stage	6DAP_D	6DAP	starch biosynthesis	4	0.4834554628058098	1
+stage	6DAP_D	6DAP	starch mobilisation	3	0.43435368354402437	1
+stage	6DAP_D	6DAP	plastid fatty-acid synthesis	3	0.3750528446522417	1
+stage	6DAP_D	6DAP	oil body	1		0
+stage	6DAP_D	6DAP	chaperone / redox	3	0.4739442148381148	1
+stage	6DAP_D	6DAP	cell expansion	1		0
+stage	12DAP_A	12DA	storage protein / protease inhibitor	3	0.5592883009332779	0
+stage	12DAP_A	12DA	starch biosynthesis	4	-0.40052069083750136	0
+stage	12DAP_A	12DA	starch mobilisation	3	0.015126563109806455	0
+stage	12DAP_A	12DA	plastid fatty-acid synthesis	3	0.33150822074032255	0
+stage	12DAP_A	12DA	oil body	1		0
+stage	12DAP_A	12DA	chaperone / redox	3	0.4439007864686278	0
+stage	12DAP_A	12DA	cell expansion	1		0
+stage	20DAP_A	20DA	storage protein / protease inhibitor	3	0.5746862871674823	0
+stage	20DAP_A	20DA	starch biosynthesis	4	-0.2133286784177272	0
+stage	20DAP_A	20DA	starch mobilisation	2	0.11635633074167892	0
+stage	20DAP_A	20DA	plastid fatty-acid synthesis	3	0.46170685896780517	0
+stage	20DAP_A	20DA	oil body	1		0
+stage	20DAP_A	20DA	chaperone / redox	3	0.5382813634564433	0
+stage	20DAP_A	20DA	cell expansion	1		0

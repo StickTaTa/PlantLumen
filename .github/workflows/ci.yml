@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install
+        run: python -m pip install -r requirements.txt pytest
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: Reproduce the published scores from the shipped artefacts
+        run: python -m plantlumen verify
+      - name: Recompute Supplementary Table S53
+        run: python scripts/report_s53.py

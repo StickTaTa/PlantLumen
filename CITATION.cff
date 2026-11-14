@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the article and the archived release."
+title: "PlantLumen: reference-assisted image-to-expression prediction for plant tissue sections"
+abstract: >-
+  Reference-assisted prediction of spatial gene expression from plant histology
+  images. One frozen architecture is applied independently to each species: the
+  feature transform, the reference bank and the expression subspace are
+  estimated inside a species and a fold, from training sections only.
+type: software
+license: MIT
+version: 0.1.0
+date-released: "2026-11-14"
+keywords:
+  - spatial transcriptomics
+  - plant histology
+  - gene expression prediction
+  - barley
+  - maize
+  - Arabidopsis
+  - Norway spruce
+authors:
+  - family-names: Huang
+    given-names: Jinjin
+  - family-names: Zheng
+    given-names: Lingling
+preferred-citation:
+  type: article
+  title: "PlantLumen: reference-assisted image-to-expression prediction for plant tissue sections"
+  authors:
+    - family-names: Huang
+      given-names: Jinjin
+    - family-names: Zheng
+      given-names: Lingling
+  journal: Plant Communications
+  status: submitted

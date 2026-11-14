@@ -1,0 +1,11 @@
+{
+ "species": "maize",
+ "marker_pass": false,
+ "n_folds": 7,
+ "n_genes": 19312,
+ "readout": "ring",
+ "block_mean": 0.6058060325927376,
+ "spot_mean": 0.13346132529633387,
+ "elapsed_s": 242.2,
+ "result_dir": "G:\\PlantLumen\\bench\\results\\maize\\ours_v15_u1"
+}

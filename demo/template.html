@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>PlantLumen · 阶段缺席条件下的空间表达预测</title>
+<style>
+  :root { --ink:#1b1f24; --mute:#6b7280; --line:#d7dbe0; --bg:#fbfbfc; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:14px/1.55 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; }
+  header { padding:20px 28px 10px; border-bottom:1px solid var(--line); background:#fff; }
+  h1 { margin:0 0 6px; font-size:19px; font-weight:650; letter-spacing:.2px; }
+  .sub { color:var(--mute); max-width:1100px; }
+  main { padding:18px 28px 40px; }
+  .bar { display:flex; gap:22px; flex-wrap:wrap; align-items:flex-end; margin-bottom:14px; }
+  label { display:block; font-size:12px; color:var(--mute); margin-bottom:4px; }
+  select { font:inherit; padding:5px 8px; border:1px solid var(--line); border-radius:6px;
+           background:#fff; min-width:190px; }
+  .stat { margin-left:auto; text-align:right; color:var(--mute); }
+  .stat b { color:var(--ink); font-size:20px; font-weight:650; }
+  .panels { display:flex; gap:26px; flex-wrap:wrap; }
+  figure { margin:0; }
+  figcaption { font-size:12.5px; color:var(--mute); margin-top:6px; }
+  canvas { border:1px solid var(--line); border-radius:8px; background:#fff; }
+  .legend { display:flex; align-items:center; gap:8px; margin-top:14px; font-size:12px;
+            color:var(--mute); }
+  .ramp { width:220px; height:10px; border-radius:5px;
+          background:linear-gradient(90deg,#2166ac,#67a9cf,#f7f7f7,#ef8a62,#b2182b); }
+  .note { margin-top:18px; max-width:1000px; color:var(--mute); font-size:12.5px;
+          border-left:3px solid var(--line); padding-left:12px; }
+  .empty { color:#9aa1a9; font-style:italic; }
+</style>
+</head>
+<body>
+<header>
+  <h1>PlantLumen · 没有同阶段参考时，图像预测出什么</h1>
+  <div class="sub">
+    大麦发育籽粒。每张图是一个空间区块，颜色为该基因（或该通路的平均剖面）在该区块的标准化值。
+    左：实测；右：模型在<strong>训练集中完全不含该发育阶段</strong>的条件下给出的预测。
+    两者都用同一套 8 区块读数评分；视图可在单基因与发育通路之间切换。
+  </div>
+</header>
+<main>
+  <div class="bar">
+    <div><label for="sec">切片（发育阶段）</label><select id="sec"></select></div>
+    <div><label for="mode">视图</label>
+      <select id="mode">
+        <option value="gene">单基因</option>
+        <option value="path">发育通路</option>
+      </select></div>
+    <div><label for="gene" id="geneLabel">基因</label><select id="gene"></select></div>
+    <div class="stat" id="stat"></div>
+  </div>
+  <div class="panels">
+    <figure><canvas id="cTrue" width="460" height="460"></canvas>
+      <figcaption>实测区块表达</figcaption></figure>
+    <figure><canvas id="cPred" width="460" height="460"></canvas>
+      <figcaption>PlantLumen 预测（阶段缺席）</figcaption></figure>
+  </div>
+  <div class="legend"><span>低</span><div class="ramp"></div><span>高</span>
+    <span style="margin-left:14px">灰点：该区块无有效读数</span></div>
+  <div class="note" id="note"></div>
+</main>
+<script>
+const data = DATA_PLACEHOLDER;
+const secSel = document.getElementById('sec');
+const geneSel = document.getElementById('gene');
+const modeSel = document.getElementById('mode');
+const geneLabel = document.getElementById('geneLabel');
+const stat = document.getElementById('stat');
+const note = document.getElementById('note');
+
+data.sections.forEach((s, i) => {
+  const o = document.createElement('option');
+  o.value = i;
+  o.textContent = `${s.tag} · ${s.stage}`;
+  secSel.appendChild(o);
+});
+
+const chosen = { gene: data.genes.find(g => (data.symbol[g] || '') === 'ACP3') || data.genes[0],
+                 path: data.pathways[0].key };
+const ZH = Object.fromEntries(data.pathways.map(p => [p.key, p.name]));
+
+function fillItems() {
+  const mode = modeSel.value;
+  geneSel.innerHTML = '';
+  if (mode === 'gene') {
+    geneLabel.textContent = '基因';
+    data.genes.forEach(g => {
+      const o = document.createElement('option');
+      o.value = g;
+      o.textContent = `${data.symbol[g] || g}  (${g})`;
+      geneSel.appendChild(o);
+    });
+  } else {
+    geneLabel.textContent = '通路';
+    data.pathways.forEach(p => {
+      const o = document.createElement('option');
+      o.value = p.key;
+      o.textContent = `${p.name}（${p.genes.length} 个基因）`;
+      geneSel.appendChild(o);
+    });
+  }
+  geneSel.value = chosen[mode];
+}
+
+function color(v, lo, hi) {
+  if (v === null || v === undefined) return '#d9dde1';
+  const t = hi > lo ? (v - lo) / (hi - lo) : 0.5;
+  const stops = [[33,102,172],[103,169,207],[247,247,247],[239,138,98],[178,24,43]];
+  const x = Math.min(0.9999, Math.max(0, t)) * (stops.length - 1);
+  const i = Math.floor(x), f = x - i;
+  const a = stops[i], b = stops[Math.min(i + 1, stops.length - 1)];
+  const c = a.map((v0, k) => Math.round(v0 + (b[k] - v0) * f));
+  return `rgb(${c[0]},${c[1]},${c[2]})`;
+}
+
+function draw(canvas, sec, values, lo, hi) {
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height, pad = 16;
+  ctx.clearRect(0, 0, w, h);
+  const xs = sec.x, ys = sec.y;
+  const xmin = Math.min(...xs), xmax = Math.max(...xs);
+  const ymin = Math.min(...ys), ymax = Math.max(...ys);
+  const sx = (w - 2 * pad) / Math.max(1e-9, xmax - xmin);
+  const sy = (h - 2 * pad) / Math.max(1e-9, ymax - ymin);
+  const sc = Math.min(sx, sy);
+  const ox = pad + ((w - 2 * pad) - (xmax - xmin) * sc) / 2;
+  const oy = pad + ((h - 2 * pad) - (ymax - ymin) * sc) / 2;
+  const idx = new Map(sec.keep.map((b, k) => [b, k]));
+  for (let i = 0; i < xs.length; i++) {
+    const k = idx.has(sec.block[i]) ? idx.get(sec.block[i]) : -1;
+    const v = (k < 0 || !values) ? null : values[k];
+    ctx.fillStyle = color(v, lo, hi);
+    const px = ox + (xs[i] - xmin) * sc;
+    const py = oy + (ymax - ys[i]) * sc;
+    ctx.beginPath();
+    ctx.arc(px, py, 3.1, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function update() {
+  const sec = data.sections[+secSel.value];
+  const mode = modeSel.value;
+  chosen[mode] = geneSel.value;
+  const key = geneSel.value;
+  const rec = mode === 'gene' ? sec.genes[key] : sec.pathways[key];
+  const cTrue = document.getElementById('cTrue');
+  const cPred = document.getElementById('cPred');
+  const label = mode === 'gene' ? (data.symbol[key] || key) : ZH[key];
+  if (!rec || !rec.measured) {
+    stat.innerHTML = '<b>—</b><br>无法评分';
+    note.innerHTML = mode === 'gene'
+      ? `<span class="empty">${label} 在 ${sec.tag} 中低于检出阈值，`
+        + '该阶段本来就还没有转录，因此没有可比较的实测剖面。</span>'
+      : `<span class="empty">${label} 在 ${sec.tag} 中可评分的基因少于 2 个，`
+        + '按预设规则不给出通路分数。</span>';
+    draw(cTrue, sec, null, 0, 1);
+    draw(cPred, sec, null, 0, 1);
+    return;
+  }
+  const all = rec.measured.concat(rec.predicted);
+  const lo = Math.min(...all), hi = Math.max(...all);
+  draw(cTrue, sec, rec.measured, lo, hi);
+  draw(cPred, sec, rec.predicted, lo, hi);
+  if (mode === 'gene') {
+    stat.innerHTML = rec.r === null ? '<b>—</b><br>无法评分'
+      : `<b>r = ${rec.r.toFixed(3)}</b><br>${sec.tag} · ${label}`;
+    note.textContent = '评分：八区块上预测与实测的逐基因 Pearson 相关，与正文和补充表同一规则。'
+      + '训练集中不含该切片所属的整段发育阶段。';
+  } else {
+    const nullText = rec.null === null ? '—' : rec.null.toFixed(3);
+    stat.innerHTML = `<b>ρ = ${rec.rho.toFixed(3)}</b><br>${sec.tag} · ${label}`
+      + ` · ${rec.n_genes} 基因`;
+    note.textContent = `通路得分为可评分基因的平均区块剖面（各基因已按 spot 标准化）；`
+      + `ρ 为八区块上预测与实测的 Spearman 相关，循环置换零分布均值 ${nullText}，`
+      + '与补充表 S53 同一规则。训练集中不含该切片所属的整段发育阶段。';
+  }
+}
+
+modeSel.addEventListener('change', () => { fillItems(); update(); });
+secSel.addEventListener('change', update);
+geneSel.addEventListener('change', update);
+fillItems();
+update();
+</script>
+</body>
+</html>
