@@ -1,6 +1,6 @@
 # PlantLumen
 
-**Reference-assisted image-to-expression prediction for plant tissue sections**
+**PlantLumen reconstructs plant spatial gene expression from histology via intraspecies retrieval and quantifies gene predictability**
 
 Jinjin Huang<sup>1</sup>, Lingling Zheng<sup>1,\*</sup>
 
@@ -249,7 +249,7 @@ If you use PlantLumen, please cite the manuscript:
 
 ```bibtex
 @article{huang2026plantlumen,
-  title   = {PlantLumen predicts spatial gene expression from plant tissue section images via intraspecies reference retrieval and determines gene image localizability},
+  title   = {PlantLumen reconstructs plant spatial gene expression from histology via intraspecies retrieval and quantifies gene predictability},
   author  = {Huang, Jinjin and Zheng, Lingling},
   year    = {2026},
   journal = {Plant Communications},

@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite both the article and the archived release."
-title: "PlantLumen: reference-assisted image-to-expression prediction for plant tissue sections"
+title: "PlantLumen reconstructs plant spatial gene expression from histology via intraspecies retrieval and quantifies gene predictability"
 abstract: >-
   Reference-assisted prediction of spatial gene expression from plant histology
   images. One frozen architecture is applied independently to each species: the
@@ -25,7 +25,7 @@ authors:
     given-names: Lingling
 preferred-citation:
   type: article
-  title: "PlantLumen: reference-assisted image-to-expression prediction for plant tissue sections"
+  title: "PlantLumen reconstructs plant spatial gene expression from histology via intraspecies retrieval and quantifies gene predictability"
   authors:
     - family-names: Huang
       given-names: Jinjin
