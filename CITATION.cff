@@ -21,6 +21,10 @@ keywords:
 authors:
   - family-names: Huang
     given-names: Jinjin
+  - family-names: Huang
+    given-names: Jiafa
+  - family-names: Qu
+    given-names: Lianghu
   - family-names: Zheng
     given-names: Lingling
 preferred-citation:
@@ -29,6 +33,10 @@ preferred-citation:
   authors:
     - family-names: Huang
       given-names: Jinjin
+    - family-names: Huang
+      given-names: Jiafa
+    - family-names: Qu
+      given-names: Lianghu
     - family-names: Zheng
       given-names: Lingling
   journal: Plant Communications

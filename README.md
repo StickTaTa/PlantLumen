@@ -2,7 +2,7 @@
 
 **PlantLumen reconstructs plant spatial gene expression from histology via intraspecies retrieval and quantifies gene predictability**
 
-Jinjin Huang<sup>1</sup>, Lingling Zheng<sup>1,\*</sup>
+Jinjin Huang<sup>1</sup>, Jiafa Huang<sup>1</sup>, Lianghu Qu<sup>1</sup>, Lingling Zheng<sup>1,\*</sup>
 
 <sup>1</sup> MOE Key Laboratory of Gene Function and Regulation, State Key Laboratory for Biocontrol,
 Innovation Center for Evolutionary Synthetic Biology, School of Life Sciences / School of Agriculture
